@@ -37,7 +37,7 @@ int main() {
 
     cout << "Ingresa un texto compuesto por letras mayúsculas y minúsculas.\n";
     getline(cin, s);
-    cout << "Ingresa la clave k, una palabra compuesta por letras mayúsculas y minúsculas..\n";
+    cout << "Ingresa la clave k, una palabra compuesta por letras mayúsculas y minúsculas.\n";
     cin >> k;
     
     for (char c : k) {
