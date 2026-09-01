@@ -6,7 +6,7 @@ bool is_letter(char c) {
     return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
 }
 
-string cifrar(string s, string k) {
+string c(string s, string k, bool cifrar) {
     int n = (int)s.size();
     int m = (int)k.size();
     int j = 0;
@@ -21,33 +21,11 @@ string cifrar(string s, string k) {
         }
         
         int offset = k[j%m] <= 'Z' ? k[j%m] - 'A' : k[j%m] - 'a';
-        
-        if(s[i] <= 'Z') s[i] = 'A' + ((s[i] - 'A') + offset) % 26;
-        else s[i] = 'a' + ((s[i] - 'a') + offset) % 26;
-        j++;
-    }
 
-    return s;
-}
-
-string descifrar(string s, string k) {
-    int n = (int)s.size();
-    int m = (int)k.size();
-    int j = 0;
-    
-    for(int i = 0; i < n; i++) {
+        if(!cifrar) offset = -offset;
         
-        if(s[i] == ' ') continue;
-        
-        if(!is_letter(s[i])) {
-            cout << "Inválido. Solo letras.\n";
-            return "";
-        }
-
-        int offset = k[j%m] <= 'Z' ? k[j%m] - 'A' : k[j%m] - 'a';
-        
-        if(s[i] <= 'Z') s[i] = 'A' + ((s[i] - 'A') - offset + 26) % 26;
-        else s[i] = 'a' + ((s[i] - 'a') - offset + 26) % 26;
+        if(s[i] <= 'Z') s[i] = 'A' + ((s[i] - 'A') + offset + 26) % 26;
+        else s[i] = 'a' + ((s[i] - 'a') + offset + 26) % 26;
         j++;
     }
 
@@ -69,8 +47,8 @@ int main() {
         }
     }
     
-    string s_cifrada = cifrar(s, k);
-    string s_descifrada = descifrar(s_cifrada, k);
+    string s_cifrada = c(s, k, 1);
+    string s_descifrada = c(s_cifrada, k, 0);
 
     if(s_cifrada != "" && s_descifrada != "") {
         cout << "Cifrado: " << s_cifrada << "\n";
