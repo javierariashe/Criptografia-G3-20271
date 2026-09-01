@@ -6,7 +6,7 @@ bool is_letter(char c) {
     return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
 }
 
-string c(string s, string k, bool cifrar) {
+string vigenere(string s, string k, bool cifrar) {
     int n = (int)s.size();
     int m = (int)k.size();
     int j = 0;
@@ -47,8 +47,8 @@ int main() {
         }
     }
     
-    string s_cifrada = c(s, k, 1);
-    string s_descifrada = c(s_cifrada, k, 0);
+    string s_cifrada = vigenere(s, k, 1);
+    string s_descifrada = vigenere(s_cifrada, k, 0);
 
     if(s_cifrada != "" && s_descifrada != "") {
         cout << "Cifrado: " << s_cifrada << "\n";
