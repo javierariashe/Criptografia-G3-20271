@@ -35,9 +35,9 @@ string vigenere(string s, string k, bool cifrar) {
 int main() {
     string s, k;
 
-    cout << "Ingresa un texto compuesto sólo por letras mayúsculas y minúsculas.\n";
+    cout << "Ingresa un texto compuesto por letras mayúsculas y minúsculas.\n";
     getline(cin, s);
-    cout << "Ingresa la clave k, una palabara compuesta por letras.\n";
+    cout << "Ingresa la clave k, una palabra compuesta por letras mayúsculas y minúsculas..\n";
     cin >> k;
     
     for (char c : k) {
